@@ -50,8 +50,12 @@ use yii\helpers\Html;
                     <?php foreach($users as $user): ?>
                     <tr class="first">
                         <td>
-                            
-                            <span class="subtext"><?php echo $user->username;?></span>
+                            <?php if (empty($user->profile->avatar)): ?>
+                                <img src="<?php echo Yii::$app->params['defaultValue']['avatar']; ?>" class="img-circle avatar hidden-phone" />
+                            <?php else: ?>
+                                <img src="assets/uploads/avatar/<?php echo $user->profile->avatar; ?>" class="img-circle avatar hidden-phone" />
+                            <?php endif; ?>
+                            <a href="#" class="name"><?php echo $user->username; ?></a>
                             <span class="subtext"><?php echo $user->useremail; ?></span>
                         </td>
                         <td>
@@ -61,7 +65,17 @@ use yii\helpers\Html;
                             <?php echo isset($user->profile->nickname) ? $user->profile->nickname : '未填写'; ?>
                         </td>
                         <td>
-                            <?php echo isset($user->profile->sex) ? $user->profile->sex : '未填写'; ?>
+                            <?php
+                            if(!isset($user->profile->sex))  echo '未填写';
+                            if($user->profile->sex === '0') {
+                                echo "男";
+                            } else if($user->profile->sex === '1') {
+                                echo "女";
+                            } else if($user->profile->sex === '2') {
+                                echo "未知";
+                            }
+
+                            ?>
                         </td>
                         <td>
                             <?php echo isset($user->profile->age) ? $user->profile->age : '未填写'; ?>

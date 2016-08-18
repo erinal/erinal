@@ -1,21 +1,35 @@
+<?php
+    use yii\helpers\Html;
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IDO ONE</title>
+<title>Erina-心情记录专家</title>
 
 <link rel="stylesheet" href="/assets/css/onepage-scroll.css">
 <link rel="stylesheet" href="/assets/css/index.css">
 <LINK rel="stylesheet" type="text/css" href="/assets/css/js.itobe.cn.css">
 <LINK rel="stylesheet" type="text/css" href="/assets/css/aaAccordion.css">
 <LINK rel="stylesheet" type="text/css" href="/assets/css/flickerplate.css">
-<script type="text/javascript" src="/assets/js/jquery-1.9.0.min.js"></script>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/assets/js/jquery-1.9.0.min.js"></script> -->
 <script type="text/javascript" src="/assets/js/jquery.onepage-scroll.min.js"></script>
 <script type="text/javascript" src="/assets/js/jQuery.resizeEnd.min.js"></script>
 <script type="text/javascript" src="/assets/js/modernizr.custom.07427.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.carouFredSel-6.2.0-packed.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.zaccordion.min.js"></script>
 <script type="text/javascript" src="/assets/js/flickerplate.min.js"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -24,15 +38,14 @@
   <div class="inner">
     <img src="/assets/images/erinal.png" height="63px"/>
     <ul class="nav">
-      <li><a href="/IDOONE/">概述</a></li>
-      <li><a href="/IDOONE/guige.html">技术规格</a></li>
-      <li><a href="http://www.htmlsucai.com">常见问题</a></li>
-      <li><a href="http://www.htmlsucai.com">社区</a></li>
+      <li><a href="<?php echo yii\helpers\Url::to(['eriuser/auth']);?>">登陆/注册</a></li>
+      <li><a href="http://www.htmlsucai.com">关于我们</a></li>
       <li><a href="#">下载APP端</a></li>
     </ul>
   </div>
 </div>
 
+<!-- MAIN-->
 <div class="main" id="main">
 	<div class="page page1">
 		<DIV class="head-pic">
@@ -40,20 +53,20 @@
 			<DIV style="display: none;" id="showCon1" class="big-pic"> <IMG  src="/assets/images/img2.png"> </DIV>
 			<DIV style="display: none;" id="showCon2" class="big-pic"> <IMG src="/assets/images/img3.png"> </DIV>
 			<DIV style="display: none;" id="showCon3" class="big-pic"><IMG src="/assets/images/img4.png"> </DIV>
-			<DIV style="display: none;" id="showCon4" class="big-pic"><IMG src="/assets/images/img5.png"> </DIV>
+			<!-- <DIV style="display: none;" id="showCon4" class="big-pic"><IMG src="/assets/images/img5.png"> </DIV>
 			<DIV style="display: none;" id="showCon5" class="big-pic"><IMG src="/assets/images/img6.png"> </DIV>
-			<DIV style="display: none;" id="showCon6" class="big-pic"><IMG  src="/assets/images/img7.png"> </DIV>
+			<DIV style="display: none;" id="showCon6" class="big-pic"><IMG  src="/assets/images/img7.png"> </DIV> -->
 			<UL class="small-pic">
 			  <LI id="list0" class="on" onMouseOver="showContent(0)"> <IMG alt="颜色" src="/assets/images/1.jpg"></LI>
 			  <LI id="list1" onMouseOver="showContent(1)"> <IMG alt="颜色" src="/assets/images/2.jpg"></LI>
 			  <LI id="list2" onMouseOver="showContent(2)"> <IMG alt="颜色" src="/assets/images/3.jpg"></LI>
 			  <LI id="list3" onMouseOver="showContent(3)"> <IMG alt="颜色" src="/assets/images/4.jpg"></LI>
-			  <LI id="list4" onMouseOver="showContent(4)"> <IMG alt="颜色" src="/assets/images/5.jpg"></LI>
+			  <!-- <LI id="list4" onMouseOver="showContent(4)"> <IMG alt="颜色" src="/assets/images/5.jpg"></LI>
 			  <LI id="list5" onMouseOver="showContent(5)"> <IMG alt="颜色" src="/assets/images/6.jpg"></LI>
-			  <LI id="list6" onMouseOver="showContent(6)"> <IMG alt="颜色" src="/assets/images/7.jpg"></LI>
+			  <LI id="list6" onMouseOver="showContent(6)"> <IMG alt="颜色" src="/assets/images/7.jpg"></LI> -->
 			</UL>
 		</DIV>
-		<div class="icon"></div>
+		<!-- <div class="icon"></div> -->
 
 		<SCRIPT language="javascript">
 
@@ -82,7 +95,7 @@
 			}
 		}
 		function showTime(){
-			if(imgNum > 7){
+			if(imgNum > 4){
 				imgNum = 0;
 			}
 			showContent(imgNum);
@@ -94,27 +107,26 @@
 	</div>
 	<div class="page page2">
 		<div class="txt" >
-			<div class="h2" id="page2_h2">自动识别运动模式&nbsp;</div>
+			<div class="h2" id="page2_h2">爱分享&nbsp;</div>
 			<div class="h2_list" id="page2_list">
-				IDO ONE助您管理运动生活&nbsp;&nbsp;&nbsp;<br/>
-				通过自动识别您的运动，您可以清楚自己步数，<br/>
-				距离，卡路里消耗，<br/>
-				让生活更智能，便捷，提升生活品质。<br/>
+				在Erinal分享生活&nbsp;&nbsp;&nbsp;<br/>
+				分享技术，<br/>
+				了解别人，<br/>
+				让一切有趣起来。<br/>
 			</div>
 			<div class="page2_img1">
-				<img src="/assets/images/page2_img1.jpg">
+				<!-- <img src="/assets/images/page2_img1.jpg">可以加一张功能截图 -->
 			</div>
 		</div>
-		<img src="/assets/images/img2-b.jpg" class="img2-b">
+		<img src="/assets/images/banner1.jpg" class="img2-b" width="1201px" height="803px">
 	</div>
 	<div class="page page3">
 		<div class="txt">
-			<div class="h3" id="page3_h3">自动监测睡眠状态&nbsp;</div>
+			<div class="h3" id="page3_h3">多记录&nbsp;</div>
 			<div class="h3_list" id="page3_list">
-			IDO ONE关心您的睡眠状况，助您改善睡眠质量&nbsp;&nbsp;&nbsp;<br/>
-			通过睡眠数据监测，您可以了解每晚入睡后深度睡眠&nbsp;&nbsp;&nbsp;<br/>
-			和浅度睡眠时间，还知道您夜晚清醒的次数，<br/>
-			让您更了解入睡的自己，进一步提高睡眠质量。<br/>
+			支持各种类型的上传分享&nbsp;&nbsp;&nbsp;<br/>
+			无论是文字，视频，图片，&nbsp;&nbsp;&nbsp;<br/>
+			私密空间，想写什么写什么。<br/>
 			</div>
 			<div class="page3_img1">
 				<img src="/assets/images/page3_img1.jpg">
@@ -126,19 +138,19 @@
 		  <ul>
 			<li class="one">
 			  <div class="photo-mask" style="opacity: 0.5;"></div>
-			  <div class="photo-text">防丢提醒</div>
+			  <div class="photo-text">热门文字</div>
 			</li>
 			<li class="two">
 			  <div class="photo-mask" style="opacity: 0;"></div>
-			  <div class="photo-text">久坐提醒</div>
+			  <div class="photo-text">精品文字</div>
 			</li>
 			<li class="three">
 			  <div class="photo-mask" style="opacity: 0.5;"></div>
-			  <div class="photo-text">来电提醒</div>
+			  <div class="photo-text">内容导航</div>
 			</li>
 			<li class="four">
 			  <div class="photo-mask" style="opacity: 0.5;"></div>
-			  <div class="photo-text">事件提醒</div>
+			  <div class="photo-text">个人空间</div>
 			</li>
 		  </ul>
 		  <!--导航-->
@@ -150,47 +162,26 @@
 
 		  <ul>
 			<li data-background="/assets/images/phone.jpg">
-			  <div class="flick-title">Flickerplate Is Working</div>
-			  <div class="flick-sub-text">Heaven forbid this package you downloaded is broken. That wouldn't be embarrassing at all.</div>
+			  <div class="flick-title"><a href="https://github.com/erinal/erinal" target="_blank">
+　　                  GitHub 项目地址
+            </a></div>
+			  <div class="flick-sub-text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Looking forward to your star!
+            </div>
 			</li>
 			<li data-background="/assets/images/misc.jpg">
-			  <div class="flick-title">Editable via Javascript or CSS</div>
-			  <div class="flick-sub-text">Take a look at the extensive documentation to see how you can change the settings in multiple ways.</div>
+			  <div class="flick-title">关于我们</div>
+			  <div class="flick-sub-text">
+                  <a href="https://github.com/vampirebitter">vampirebiiter</a>
+                  <span>南京信息工程大学学生</span>
+                  <br />
+                  <a href="https://github.com/Qsaka">Qsaka</a>
+                  <span>南京信息工程大学学生</span>
+              </div>
 			</li>
 		  </ul>
 		</div>
 	</div>
-	<div class="page page6">
-		<div class="txt" >
-			<div class="h6" id="page6_txt">充电如此简单</div>
-			<div class="h6_list" id="page6_list">
-				我们希望，充电能做到更简单，更聪明<br/>
-				因此，IDO ONE创新使用磁吸式触点充电<br/>
-				将T线靠近表盘就能吸附充电<br/>
-				仅需25分钟即可完全充满<br/>
-				一周待机时间，让您不必为电量烦恼<br/>
-			</div>
-			<div class="page6_img1">
-				<img src="/assets/images/page6_img1.jpg">
-			</div>
-
-		</div>
-	</div>
-	<div class="page page7">
-		<div class="txt" >
-			<div class="h7" id="page7_txt">精选的材质</div>
-			<div class="h7_list" id="page7_list">
-				蓝宝石镜面<br/>
-				12盏LED指示灯<br/>
-				OLED显示屏<br/>
-				316L不锈钢表盘（玫瑰金，太空黑，星光银）<br/>
-				精选头层牛皮表带<br/>
-				T线：磁吸式触点充电<br/>
-			</div>
-		</div>
-
-	</div>
-
 </div>
 <script type="text/javascript">
 $(function(){
