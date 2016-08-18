@@ -9,11 +9,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-<<<<<<< HEAD
             'cookieValidationKey' => '123456',
-=======
-            'cookieValidationKey' => '',
->>>>>>> 6827f07c18321bb2ced3e2fa48d40f0708aacaeb
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -65,12 +61,9 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
     ];
-<<<<<<< HEAD
     $config['modules']['admin'] = [
         'class' => 'app\modules\admin',
     ];
-=======
->>>>>>> 6827f07c18321bb2ced3e2fa48d40f0708aacaeb
 }
 
 return $config;

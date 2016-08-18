@@ -29,10 +29,7 @@ CREATE TABLE `eri_admin` (
   `adminemail` varchar(50) NOT NULL DEFAULT '',
   `logintime` int(10) unsigned NOT NULL DEFAULT '0',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0',
-<<<<<<< HEAD
   `loginip` bigint NOT NULL DEFAULT '0',
-=======
->>>>>>> 6827f07c18321bb2ced3e2fa48d40f0708aacaeb
   `islock` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`adminid`),
   UNIQUE KEY `eri_admin_adminuser_adminpass` (`adminuser`,`adminpass`),
@@ -71,15 +68,12 @@ CREATE TABLE `eri_articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-<<<<<<< HEAD
 
 create table `eri_article_category` (
   `articleid` bigint(20) unsigned NOT NULL,
   `cateid` int(10) unsigned not null,
   PRIMARY key (`articleid`, `cateid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-=======
->>>>>>> 6827f07c18321bb2ced3e2fa48d40f0708aacaeb
 --
 -- Dumping data for table `eri_articles`
 --
