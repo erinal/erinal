@@ -37,15 +37,15 @@
                             <th class="span2 sortable">
                                 <span class="line"></span>创建时间
                             </th>
-   <!--                          <th class="span2 sortable">
+  <!--                           <th class="span2 sortable">
                                 <span class="line"></span>促销价
                             </th>
                             <th class="span2 sortable">
                                 <span class="line"></span>是否上架
-                            </th>
+                            </th> -->
                             <th class="span2 sortable">
                                 <span class="line"></span>是否推荐
-                            </th> -->
+                            </th>
 
                             <th class="span3 sortable align-right">
                                 <span class="line"></span>操作
@@ -76,7 +76,12 @@
                             ?>
                         </td>
                         <td>
-                            <?php echo $article->createtime ?>
+                            <?php echo  date('Y-m-d H:i:s',$article->createtime) ?>
+                        </td>
+                        <td>
+                            <?php 
+                            $option = ['否','是'];
+                            echo  $option[$article->isrecommond] ?>
                         </td>
 
                         <td class="align-right">

@@ -31,10 +31,12 @@ class Article extends ActiveRecord {
 
     public function addArticle($data) {
         $this->scenario = 'addArticle';
-        $data['Article']['createtime'] = time();
-        $data['Article']['userid'] = (int)Yii::$app->session['admin']['adminuser'];
-        if($this->load($data) && $this->save()) {
-            return true;
+        if($this->load($data)) {
+            $this->createtime = time();
+            $this->userid = (int)Yii::$app->session['admin']['adminuser'];
+            if($this->save()) {
+                return true;
+            }
         }
         return false;
     }
