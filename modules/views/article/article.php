@@ -62,7 +62,8 @@
                             ?>
                         </td>
                         <td>
-                            <?php var_dump($article); ?>
+                            <?php foreach ($article->article_category as $_ => $value) {
+                                echo $relation[$value->cateid].'/';} ?>
                         </td>
                         <td>
                             <?php

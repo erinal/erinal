@@ -50,7 +50,7 @@ class ManageController extends Controller
              Yii::$app->session->setFlash('info','添加失败');
         }
      }
-        return $this->render("reg",['model' => $model]);//这里的['model' => $model ] 就可以在模板中实现对模板的创建
+        return $this->render("reg",['model' => $model]);
     }
 
     public function actionDel() {

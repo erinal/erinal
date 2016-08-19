@@ -8,15 +8,24 @@ use yii\data\Pagination;
 use Yii;
     
 class ArticleController extends Controller {
-        
+
+
+    private function getRelation() {
+        $cates = Category::find()->all();
+        foreach($cates as $cate) {
+            $relation[$cate->cateid] = $cate->catename;
+        }
+        return $relation;
+    }
     public function actionList() {
         $this->layout = "layout_admin";
         $model = Article::find()->joinWith(['article_category']);
+        $relation = $this->getRelation();
         $count = $model->count();
         $pageSize = Yii::$app->params['pageSize']['manage'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
         $articles = $model -> offset($pager->offset)->limit($pager->limit)->all();
-        return $this->render("article",['articles'  => $articles,'pager' => $pager]);
+         return $this->render("article",['articles'  => $articles,'pager' => $pager,'relation'=>$relation]);
      }
         
     public function actionDetail() {

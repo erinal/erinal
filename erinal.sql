@@ -140,7 +140,7 @@ CREATE TABLE `eri_comments` (
   `commentid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `articleid` bigint(20) unsigned NOT NULL,
   `userid` bigint(20) unsigned NOT NULL,
-  `content` varchar(255) NOT NULL DEFAULT '',
+  `content` text NOT NULL DEFAULT '',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`commentid`),
   KEY `eri_comments_commentid_articleid_userid` (`commentid`,`articleid`,`userid`)
@@ -172,6 +172,7 @@ CREATE TABLE `eri_profile` (
   `birthday` date NOT NULL DEFAULT '2016-01-01' COMMENT '生日',
   `nickname` varchar(32) NOT NULL DEFAULT '' COMMENT '昵称',
   `company` varchar(100) NOT NULL DEFAULT '' COMMENT '公司',
+  `profile` text NOT NULL DEFAULT '' COMMENT '个人简介',
   `userid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '用户的ID',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`),

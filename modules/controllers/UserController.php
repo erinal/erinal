@@ -28,6 +28,17 @@ class UserController extends Controller
     }
 
     public function actionReg() {
-        
+        $this->layout = "layout_admin";
+        $model = new User;
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            if($model->reg($post)) {
+            Yii::$app->session->setFlash('info','添加成功');
+            $this->redirect(['user/users']);
+        } else {
+             Yii::$app->session->setFlash('info','添加失败');
+        }
+     }
+        return $this->render("reg",['model' => $model]);//这里的['model' => $model ] 就可以在模板中实现对模板的创建
     }
 }
