@@ -39,6 +39,7 @@
                                 echo $form->field($model, 'cateid')->checkboxList($list, ['id' => 'cates']);
                                 echo $form->field($model, 'title')->textInput(['class' => 'span9']);
                                 echo $form->field($model, 'content')->textarea(['rows'=>10,'class' =>'span9']);
+                                echo $form->field($model, 'summary')->textarea(['rows'=>3,'class' =>'span9']);
                                 echo $form->field($model, 'isrecommond')->radioList([0 => '不推荐', 1 => '推荐'], ['class' => 'span8']);
                                 ?>
                                 <div class="span11 field-box actions">

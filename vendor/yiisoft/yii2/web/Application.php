@@ -182,6 +182,7 @@ class Application extends \yii\base\Application
             'session' => ['class' => 'yii\web\Session'],
             'user' => ['class' => 'yii\web\User'],
             'errorHandler' => ['class' => 'yii\web\ErrorHandler'],
+            'HyperDown' => ['class'=>'yii\web\HyperDown'],
         ]);
     }
 }

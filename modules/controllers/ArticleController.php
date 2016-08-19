@@ -11,12 +11,11 @@ class ArticleController extends Controller {
         
     public function actionList() {
         $this->layout = "layout_admin";
-        $model = Article::find(); //-> joinWith('article_category');
+        $model = Article::find()->joinWith(['article_category']);
         $count = $model->count();
         $pageSize = Yii::$app->params['pageSize']['manage'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
         $articles = $model -> offset($pager->offset)->limit($pager->limit)->all();
-        // var_dump($articles);
         return $this->render("article",['articles'  => $articles,'pager' => $pager]);
      }
         
@@ -31,9 +30,13 @@ class ArticleController extends Controller {
         $list = (new Category)->getOptions([]);
         if (Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();
-            if($model->addArticle($post) && (new article_category)->add($post)) {
-                Yii::$app->session->setFlash('info','添加成功');
-                $this->redirect(['article/list']);
+            if($articleid = $model->addArticle($post)) {
+                $data['Article_category']['cateid'] = $post['Article']['cateid'];
+                $data['Article_category']['articleid'] = $articleid;
+                $data['_csrf'] = $post['_csrf'];
+                if ($a = (new article_category)->add($data)) {
+                    $this->redirect(['article/list']);
+                }
             } else {
                 Yii::$app->session->setFlash('info','添加失败');
             }
@@ -49,10 +52,10 @@ class ArticleController extends Controller {
         }
         $model = new Article;
         if( $model->deleteAll('articleid = :id',[':id' => $articleid])) {
-            Yii::$app->session->setflash('info','文章删除成功');
+            // Yii::$app->session->setflash('info','文章删除成功');
             $this->redirect(['article/list']);
         }else {
-            Yii::$app->session->setflash('info','文章删除失败');
+            // Yii::$app->session->setflash('info','文章删除失败');
             $this->redirect(['article/list']);
         }
     }

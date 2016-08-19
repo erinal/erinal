@@ -37,12 +37,6 @@
                             <th class="span2 sortable">
                                 <span class="line"></span>创建时间
                             </th>
-  <!--                           <th class="span2 sortable">
-                                <span class="line"></span>促销价
-                            </th>
-                            <th class="span2 sortable">
-                                <span class="line"></span>是否上架
-                            </th> -->
                             <th class="span2 sortable">
                                 <span class="line"></span>是否推荐
                             </th>
@@ -68,7 +62,7 @@
                             ?>
                         </td>
                         <td>
-                            <?php echo $article->cateid ?>
+                            <?php var_dump($article); ?>
                         </td>
                         <td>
                             <?php
