@@ -29,12 +29,12 @@ CREATE TABLE `eri_admin` (
   `adminemail` varchar(50) NOT NULL DEFAULT '',
   `logintime` int(10) unsigned NOT NULL DEFAULT '0',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `loginip` bigint NOT NULL DEFAULT '0',
+  `loginip` bigint(20) NOT NULL DEFAULT '0',
   `islock` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`adminid`),
   UNIQUE KEY `eri_admin_adminuser_adminpass` (`adminuser`,`adminpass`),
   UNIQUE KEY `eri_admin_adminuser_adminemail` (`adminuser`,`adminemail`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,32 @@ CREATE TABLE `eri_admin` (
 
 LOCK TABLES `eri_admin` WRITE;
 /*!40000 ALTER TABLE `eri_admin` DISABLE KEYS */;
+INSERT INTO `eri_admin` VALUES (1000,'admin','3993b643fab872379256104cf5ff1867','admin@163.com',1471579030,1471494762,2130706433,0);
 /*!40000 ALTER TABLE `eri_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `eri_article_category`
+--
+
+DROP TABLE IF EXISTS `eri_article_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `eri_article_category` (
+  `articleid` bigint(20) unsigned NOT NULL,
+  `cateid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`articleid`,`cateid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `eri_article_category`
+--
+
+LOCK TABLES `eri_article_category` WRITE;
+/*!40000 ALTER TABLE `eri_article_category` DISABLE KEYS */;
+INSERT INTO `eri_article_category` VALUES (1,1),(1,3);
+/*!40000 ALTER TABLE `eri_article_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -65,21 +90,16 @@ CREATE TABLE `eri_articles` (
   `userid` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`articleid`),
   KEY `eri_articles_articleid_userid` (`articleid`,`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
-create table `eri_article_category` (
-  `articleid` bigint(20) unsigned NOT NULL,
-  `cateid` int(10) unsigned not null,
-  PRIMARY key (`articleid`, `cateid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Dumping data for table `eri_articles`
 --
 
 LOCK TABLES `eri_articles` WRITE;
 /*!40000 ALTER TABLE `eri_articles` DISABLE KEYS */;
+INSERT INTO `eri_articles` VALUES (1,'zz','zzzzzz','zzz',1471582345,0,0,1,0);
 /*!40000 ALTER TABLE `eri_articles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +116,7 @@ CREATE TABLE `eri_category` (
   `parentid` int(10) unsigned NOT NULL DEFAULT '0',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`cateid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,6 +125,7 @@ CREATE TABLE `eri_category` (
 
 LOCK TABLES `eri_category` WRITE;
 /*!40000 ALTER TABLE `eri_category` DISABLE KEYS */;
+INSERT INTO `eri_category` VALUES (1,'工口',0,1471498453),(3,'123',0,1471573120);
 /*!40000 ALTER TABLE `eri_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-17 14:12:55
+-- Dump completed on 2016-08-19 13:20:33
