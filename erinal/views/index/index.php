@@ -145,7 +145,7 @@
 			  <div class="photo-text">精品文字</div>
 			</li>
 			<li class="three">
-			  <div class="photo-mask" style="opacity: 0.5;"></div>
+			  <div class="photo-mask" style="opacity: 0.5;" id="tabwind"></div>
 			  <div class="photo-text">内容导航</div>
 			</li>
 			<li class="four">
@@ -276,6 +276,13 @@ $(function(){
 			responsiveFn2();
 		}
 	});
+
+    var tabwind = document.getElementById("tabwind");
+    tabwind.onclick = function(){
+        window.location.href="<?php echo yii\helpers\Url::to(['tabwind/index']); ?>";
+    }
+
+
 
 	function responsiveFn1(){
 		$body.addClass('responsive-height-lt790')

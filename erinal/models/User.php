@@ -8,7 +8,6 @@ class User extends ActiveRecord {
     public $repass;
     public $loginname;
     public $rememberMe = true;
-    // public $verifyCode;
     public static function tableName()
     {
         return "{{%user}}";
@@ -22,7 +21,6 @@ class User extends ActiveRecord {
             'repass' => '确认密码',
             'useremail' => '电子邮箱',
             'loginname' => '用户名/电子邮箱',
-            // 'verifyCode' =>'验证码',
         ];
     }
     public function rules() {
@@ -37,7 +35,6 @@ class User extends ActiveRecord {
             ['repass', 'required', 'message' => '确认密码不能为空', 'on' => ['userRegister','userIndexRegister']],
             ['repass', 'compare', 'compareAttribute' => 'userpass', 'message' => '两次密码输入不一致', 'on' => ['userRegister','userIndexRegister']],
             ['userpass', 'validatePass', 'on' => ['login']],
-            // ['verifyCode', 'captcha','captchaAction'=>'eriuser/captcha','message' => '验证码错误'],
         ];
     }
 
@@ -87,6 +84,8 @@ class User extends ActiveRecord {
 
     public function sendEmail($data) {
         $this->scenario = "userIndexRegister";
+        $allType = explode('@',$data['User']['useremail']);
+        $type = explode('.',$allType[1])[0];
         if($this->load($data) && $this->validate()) {
             $this->createtime = time();
             $this->userpass = md5($this->userpass);
@@ -98,7 +97,7 @@ class User extends ActiveRecord {
                 $mailer->setTo($data['User']['useremail']);
                 $mailer->setSubject("这是一封激活用户的邮件");
                 if ($mailer->send()) {
-                    return true;
+                    return $type;
                 }
             }
         }

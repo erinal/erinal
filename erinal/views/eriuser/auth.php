@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-// use yii\captcha\Captcha;
 use Yii;
 ?>
 <!DOCTYPE html>
@@ -62,7 +61,6 @@ use Yii;
             <?php echo $form->field($model,'useremail')->textInput(['placeholder' => 'Email']);?>
             <?php echo $form->field($model,'userpass')->passwordInput(['placeholder' => '******']);?>
             <?php echo $form->field($model,'repass')->passwordInput(['placeholder' => '******']);?>
-            
             <br>
             <?php echo Html::submitButton('注册',['class' => 'btn btn-lg btn-primary btn-block']);?>
           <?php ActiveForm::end();?>
@@ -124,7 +122,11 @@ use Yii;
       qqbtn.onclick = function(){
           window.location.href="<?php echo yii\helpers\Url::to(['eriuser/qqlogin']) ?>";
       }
-
+    //   $("#fox").on('click',function(e){
+    // //#testimonials-captcha-image is my captcha image id
+    //     $("img[id$='-captcha-image']").trigger('click');
+    //     e.preventDefault();
+    //   })
   //     $(function(){                   //当页面加载的时候
   //     get_code();         //刷新或者重新加载一个验证码
   //     });

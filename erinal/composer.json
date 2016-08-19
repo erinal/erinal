@@ -18,7 +18,8 @@
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-	"crazyfd/yii2-qiniu": "dev-master"
+	"crazyfd/yii2-qiniu": "dev-master",
+        "yiidoc/yii2-redactor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -50,6 +51,12 @@
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
         }
     }
 }

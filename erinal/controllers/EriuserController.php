@@ -29,10 +29,12 @@ class EriuserController extends Controller {
         $model = new User;
         if(Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();
-            if($model->sendEmail($post)) {
+            if((bool)$type = $model->sendEmail($post)) {
                 Yii::$app->session->setFlash('info','验证邮箱已发送，请注意查收');
+                return $this->redirect(['direct/index','type' => $type]);
             } else {
                 Yii::$app->session->setFlash('info','邮箱发送失败，请稍后重试');
+                return $this->redirect(['direct/error']);
             }
         }
 

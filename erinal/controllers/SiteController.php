@@ -43,6 +43,12 @@ class SiteController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'maxLength' => 4, //最大显示个数
+                'minLength' => 3,//最少显示个数
+                'padding' => 5,//间距
+                'height' => 31,
+                'width' => 70,
+                'offset'=>4,        //设置字符偏移量 有效果
             ],
         ];
     }
