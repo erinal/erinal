@@ -6,6 +6,7 @@ use yii\db\ActiveRecord;
 use Yii;
 
 class Category extends ActiveRecord {
+    public $articleid;
     public static function tableName() {
         return "{{%category}}";// {{%}}代表表前缀
     }
@@ -89,5 +90,14 @@ class Category extends ActiveRecord {
         $data = $this->getData();
         $tree = $this->getTree($data);
         return $tree = $this->setPrefix($tree);
+    }
+
+    public function getArticle_category() {
+        // 第一个参数为要关联的子表模型类名，
+        // 第二个参数指定 通过子表的customer_id，关联主表的id字段
+        return $this->hasMany(Article_category::className(), ['cateid' => 'cateid']);
+    }
+        public function getArticle() {
+        return $this->hasMany(Article::className(), ['articleid' => 'articleid']);
     }
 }

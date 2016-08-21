@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>标签云</title>
 <link rel="stylesheet" type="text/css" href="/assets/css/miaov_style.css" />
 <script type="text/javascript" src="/assets/js/miaov.js"></script>
 </head>
 
 <body>
 <div id="div1">
-	<a href="http://www.miaov.com">JS课程</a>
-	<a href="http://www.miaov.com/course_outline_1.html.php" class="red">教程</a>
+	<!-- 这里未实现的就是点击标签之后对应到相应的article页面下，并且使得不同级别的标签显示不同的颜色-->
+	<?php foreach($categorys as $item => $category) : ?>
+	<a href="<?php echo yii\helpers\Url::to(['articlelist/index','cateid' => $category['cateid']])?>"><?php echo $category['catename'];?></a>
+	<?php endforeach;?>
+	<!-- <a href="http://www.miaov.com/course_outline_1.html.php" class="red">教程</a>
 	<a href="http://www.miaov.com">试听</a>
 	<a href="http://www.miaov.com">精品</a>
 	<a href="http://www.miaov.com" class="blue">妙味课堂</a>
@@ -29,7 +32,7 @@
 	<a href="http://blog.miaov.com/">W3C</a>
 	<a href="http://blog.miaov.com/716.html">石川</a>
 	<a href="http://www.miaov.com/" class="yellow">妙味课堂</a>
-	<a href="http://blog.miaov.com/676.html">blue</a>
+	<a href="http://blog.miaov.com/676.html">blue</a> -->
 </div>
 <p>点击您所喜欢的标签，GET STARTED!</p>
 </body>

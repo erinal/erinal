@@ -25,15 +25,19 @@ class Article_category extends ActiveRecord
                     $issuccess = true;
                 else
                     $issuccess = false;
-                $this->setIsNewRecord(true); 
+                $this->setIsNewRecord(true);
             }
             if($issuccess)
                 return true;
         }
         return false;
     }
-    
+
     public function getCategory() {
         return $this->hasMany(Category::className(), ['cateid' => 'cateid']);
+    }
+
+    public function getArticle() {
+        return $this->hasMany(Article::className(),['articleid' => 'articleid']);
     }
 }

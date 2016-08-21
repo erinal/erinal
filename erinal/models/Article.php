@@ -4,13 +4,11 @@ use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
 use app\models\Article_category;
 use Yii;
-
 class Article extends ActiveRecord {
-    // public $cateid;
+    public $cateid;
     public static function tableName() {
         return "{{%articles}}";
     }
-
     public function attributeLabels() {
         return [
             'cateid' => '分类',
@@ -20,7 +18,6 @@ class Article extends ActiveRecord {
             'isrecommond' => '',
         ];
     }
-
     public function rules() {
         return [
           ['title','required','message' => '标题不能为空','on' => 'addArticle'],
@@ -30,7 +27,6 @@ class Article extends ActiveRecord {
           ['ishot','boolean','on'=>'addArticle'],
         ];
     }
-
     public function addArticle($data) {
         $this->scenario = 'addArticle';
         if($this->load($data)) {
@@ -42,17 +38,12 @@ class Article extends ActiveRecord {
         }
         return false;
     }
-
     public function getArticle_category() {
         // 第一个参数为要关联的子表模型类名，
         // 第二个参数指定 通过子表的customer_id，关联主表的id字段
         return $this->hasMany(Article_category::className(), ['articleid' => 'articleid']);
     }
-
-    //     public function getCategory() {
-    //     return $this->hasMany(Category::className(), ['cateid' => 'cateid']);
-    // }
-
-
-
+        public function getCategory() {
+        return $this->hasMany(Category::className(), ['cateid' => 'cateid']);
+    }
 }
